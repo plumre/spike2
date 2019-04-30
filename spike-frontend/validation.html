@@ -1,0 +1,77 @@
+<!-- jQuery验证： -->
+<!-- test()方法 判断字符串中是否匹配到正则表达式内容，返回的是boolean值 ( true / false ) -->
+<script type="text/javascript">
+    // 验证中文名称
+function isChinaName(name) {
+    var pattern = /^[\u4E00-\u9FA5]{1,6}$/;
+    return pattern.test(name);
+}
+
+// 验证手机号
+function isPhoneNo(phone) {  
+    var pattern = /^1[34578]\d{9}$/;  
+    return pattern.test(phone);  
+}
+
+// 验证身份证 
+function isCardNo(card) {  
+   var pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;  
+   return pattern.test(card); 
+} 
+
+// 验证函数
+function formValidate() {
+    var str = '';
+
+    // 判断名称
+    if($.trim($('#name').val()).length == 0) {
+        str += '名称没有输入\n';
+        $('#name').focus();
+    } else {
+        if(isChinaName($.trim($('#name').val())) == false) {
+            str += '名称不合法\n';
+            $('#name').focus();
+        }
+    }
+
+    // 判断手机号码
+    if ($.trim($('#phone').val()).length == 0) {  
+        str += '手机号没有输入\n';
+        $('#phone').focus();
+    } else {
+        if(isPhoneNo($.trim($('#phone').val()) == false)) {
+           str += '手机号码不正确\n';
+           $('#phone').focus();
+        }
+    }
+
+    // 验证身份证
+    if($.trim($('#identity').val()).length == 0) {  
+        str += '身份证号码没有输入\n';
+        $('#identity').focus();
+    } else {
+        if(isCardNo($.trim($('#identity').val())) == false) {
+            str += '身份证号不正确；\n';
+            $('#identity').focus();
+        }
+    }
+
+    // 验证地址
+    if($.trim($('#address').val()).length == 0) {  
+        str += '地址没有输入\n';
+        $('#address').focus();
+    }
+
+    // 如果没有错误则提交
+    if(str != '') {
+        alert(str);
+        return false;
+    } else {
+        $('.auth-form').submit();
+    }
+}
+
+$('#submit').on('click', function() {
+    formValidate
+</script>
+

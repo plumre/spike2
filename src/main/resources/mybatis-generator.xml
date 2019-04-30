@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--<classPathEntry location="/Program Files/IBM/SQLLIB/java/db2java.zip" />-->
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!--connection for mysql database-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/spike"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <!--<javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>-->
+
+        <!--location for DO(data object)-->
+        <javaModelGenerator targetPackage="com.plumre.dataobject" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--location for mapping of sql-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--location for dao-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.plumre.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--configuration of tables-->
+        <!--schema="DB2ADMIN"-->
+        <!--<table tableName="user_info" domainObjectName="UserDO"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableSelectByExample="false" enableDeleteByExample="false"
+               selectByExampleQueryId="false">
+            &lt;!&ndash;<property name="useActualColumnNames" value="true"/>
+            <generatedKey column="ID" sqlStatement="DB2" identity="true" />
+            <columnOverride column="DATE_FIELD" property="startDate" />
+            <ignoreColumn column="FRED" />
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />&ndash;&gt;
+        </table>
+        <table tableName="user_password" domainObjectName="UserPasswordDO"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableSelectByExample="false" enableDeleteByExample="false"
+               selectByExampleQueryId="false"/>-->
+
+        <table tableName="promo" domainObjectName="PromoDO"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableSelectByExample="false" enableDeleteByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <!--table tableName="item_stock" domainObjectName="ItemStockDO"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableSelectByExample="false" enableDeleteByExample="false"
+               selectByExampleQueryId="false"/>-->
+
+    </context>
+</generatorConfiguration>
